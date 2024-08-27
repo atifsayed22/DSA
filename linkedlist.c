@@ -13,7 +13,7 @@ struct Node*getnode(){
 void freenode(struct Node*p){
     free(p);
 }
-struct Node *newnode,*temp,*previous;
+struct Node *newnode,*temp,*previous,*current;
 void insert(int x){
     newnode=getnode();
     newnode->data=x;
@@ -55,6 +55,7 @@ void deleteAtFront(){
     head=head->next;
     free(temp);
 }
+
 void display() {
     struct Node* temp = head; // Define temp as a local pointer variable
 
@@ -69,6 +70,19 @@ void display() {
     }
     printf("\n"); // Newline for better output formatting
 }
+void reverse(){
+    previous=0;
+    current=newnode=head;
+
+    while(newnode!=0){
+        newnode=newnode->next;
+        current->next=previous;
+        previous=current;
+        current=newnode;
+    }
+    head=previous;
+    display();
+}
 
 
 int main(){
@@ -81,7 +95,8 @@ int main(){
         printf("\n 2. delete at end of linked lis");
         printf("\n 3. delete at Front of linked lis");
         printf("\n 4. display");
-        printf("\n 5. Exit");
+        printf("\n 5. reverse que");
+        printf("\n 6. Exit");
         printf("\n Enter you choice:");
         scanf("%d",&choice);
         switch (choice)
@@ -102,6 +117,9 @@ int main(){
             display();
             break;
         case 5:
+            reverse();
+            break;
+        case 6:
             exit(1);
             break;
         

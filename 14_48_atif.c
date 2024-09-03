@@ -65,10 +65,10 @@ void display() {
     }
 
     while (temp != 0) { // Traverse the list until the end
-        printf(" %d ", temp->data); // Print the data of the current node
+        printf(" %d -> ", temp->data); // Print the data of the current node
         temp = temp->next; // Move to the next node
     }
-    printf("\n"); // Newline for better output formatting
+    printf("NULL\n"); // Newline for better output formatting
 }
 void reverse(){
     previous=0;
